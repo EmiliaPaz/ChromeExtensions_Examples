@@ -1,4 +1,5 @@
 function reddenPage() {
+  console.log('content script from function executed (red)');
   document.body.style.backgroundColor = 'red';
 }
 
@@ -18,7 +19,6 @@ async function runScripts() {
       target: { tabId: tab.id },
       files: ['content_script_green.js']
     });
-
   });
 
   // Option 2.b: programatically inject script from js function when button is 
@@ -30,8 +30,9 @@ async function runScripts() {
     });
   });
 
-  // Option 3: register script from file when button is clicked. The script will
-  // be executed next time the document loads.
+  // Option 3.b: register script from file when button is clicked. The script
+  // will be executed next time the document loads since it was registered after
+  // the document finished loading.
   blueButton.addEventListener('click', () => {
     chrome.scripting.registerContentScripts(
       [{
