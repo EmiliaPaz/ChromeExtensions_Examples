@@ -1,0 +1,20 @@
+{
+  "name": "Scripting API sample extension",
+  "description": "Tests the different ways to insert a content script with the scripting API",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": ["*://*/*"],
+  "action": { 
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_script_yellow.js"]
+    }
+  ]
+}
