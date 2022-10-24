@@ -10,9 +10,9 @@ async function runScripts() {
   let redButton = document.getElementById('red-button');
   let blueButton = document.getElementById('blue-button');
 
-  // Option A: inject static script specified in manifest at document load.
+  // Option 1: inject static script specified in manifest at document load.
 
-  // Option B: programatically inject script from file when button is clicked.
+  // Option 2.a: programatically inject script from file when button is clicked.
   greenButton.addEventListener('click', () => {
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
@@ -21,7 +21,7 @@ async function runScripts() {
 
   });
 
-  // Option C: programatically inject script from js function when button is 
+  // Option 2.b: programatically inject script from js function when button is 
   // clicked.
   redButton.addEventListener('click', () => {
     chrome.scripting.executeScript({
@@ -30,8 +30,8 @@ async function runScripts() {
     });
   });
 
-  // Option D: register script that will be executed next time the document
-  // loads when button is clicked
+  // Option 3: register script from file when button is clicked. The script will
+  // be executed next time the document loads.
   blueButton.addEventListener('click', () => {
     chrome.scripting.registerContentScripts(
       [{
